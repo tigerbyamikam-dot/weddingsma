@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Amikam Yalovetzky | Wedding Officiant Massachusetts</title>
+  <meta name="description" content="Ceremony moments from weddings officiated by Amikam Yalovetzky in Massachusetts." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d2240;
+      --gold:   #c8973a;
+      --gold-lt:#e8b85a;
+      --cream:  #fdf8f0;
+      --white:  #ffffff;
+      --text:   #1a1a2e;
+      --muted:  #5a5a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5%;
+      background: rgba(13, 34, 64, 0.96);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.1rem;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-lt); }
+
+    /* ── HERO ── */
+    .page-hero {
+      background: var(--navy);
+      padding: 8rem 5% 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(200,151,58,.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(200,151,58,.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .page-hero .label {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .6rem;
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 em { color: var(--gold); font-style: italic; }
+
+    .page-hero p {
+      color: rgba(255,255,255,.7);
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      background: var(--white);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      padding: 1rem 5%;
+      display: flex;
+      gap: .7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: sticky;
+      top: 62px;
+      z-index: 50;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(13,34,64,.2);
+      color: var(--muted);
+      padding: .45rem 1.1rem;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+
+    /* ── GALLERY GRID ── */
+    .gallery-section {
+      padding: 4rem 5%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      columns: 3;
+      column-gap: 1.2rem;
+    }
+
+    @media (max-width: 900px) { .gallery-grid { columns: 2; } }
+    @media (max-width: 500px) { .gallery-grid { columns: 1; } }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1.2rem;
+      position: relative;
+      cursor: pointer;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      transition: transform .4s ease, opacity .3s;
+      border-radius: 4px;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+      opacity: .85;
+    }
+
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,34,64,.7) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-caption {
+      color: var(--white);
+      font-size: .82rem;
+      letter-spacing: .05em;
+    }
+
+    .gallery-caption strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: .2rem;
+      color: var(--gold-lt);
+    }
+
+    /* placeholder cards */
+    .gallery-placeholder {
+      break-inside: avoid;
+      margin-bottom: 1.2rem;
+      border-radius: 4px;
+      background: rgba(13,34,64,.06);
+      border: 2px dashed rgba(200,151,58,.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      color: var(--muted);
+      font-size: .82rem;
+      text-align: center;
+      padding: 2rem 1rem;
+      min-height: 200px;
+    }
+
+    .gallery-placeholder .ph-icon { font-size: 1.8rem; opacity: .4; }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 200;
+      background: rgba(7,15,28,.95);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 4px;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none; border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: .7;
+      transition: opacity .2s;
+      line-height: 1;
+    }
+    .lb-close:hover { opacity: 1; }
+
+    .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--white);
+      font-size: 1.5rem;
+      width: 3rem; height: 3rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb-prev:hover, .lb-next:hover { background: rgba(200,151,58,.3); }
+    .lb-prev { left: 1.5rem; }
+    .lb-next { right: 1.5rem; }
+
+    .lb-info {
+      position: absolute;
+      bottom: 1.5rem; left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,.7);
+      font-size: .85rem;
+    }
+
+    .lb-info strong { color: var(--gold-lt); font-family: 'Playfair Display', serif; font-size: 1rem; }
+
+    /* ── UPLOAD NOTE (dev helper) ── */
+    .upload-note {
+      background: var(--navy);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: .9rem;
+    }
+
+    .upload-note strong { color: var(--gold); }
+
+    .upload-note code {
+      background: rgba(255,255,255,.1);
+      padding: .2rem .5rem;
+      border-radius: 3px;
+      font-size: .85rem;
+      color: var(--gold-lt);
+    }
+
+    /* ── CTA ── */
+    .gallery-cta {
+      background: var(--gold);
+      text-align: center;
+      padding: 4rem 5%;
+    }
+
+    .gallery-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: .8rem;
+    }
+
+    .gallery-cta p { color: rgba(13,34,64,.7); margin-bottom: 1.8rem; }
+
+    .btn-navy {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      padding: .9rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: .88rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: opacity .2s;
+    }
+
+    .btn-navy:hover { opacity: .85; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #070f1c;
+      padding: 2.5rem 5%;
+      text-align: center;
+      color: rgba(255,255,255,.4);
+      font-size: .82rem;
+    }
+
+    footer strong { color: var(--gold); }
+
+    .footer-links {
+      display: flex; justify-content: center; gap: 1.5rem;
+      margin-bottom: 1rem;
+      list-style: none;
+    }
+
+    .footer-links a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .lb-prev { left: .5rem; }
+      .lb-next { right: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">✡ Amikam Yalovetzky</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#process">How It Works</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="label">Ceremony Moments</p>
+    <h1>Love, <em>Captured</em></h1>
+    <p>A glimpse into the ceremonies we've had the honor of celebrating — chuppot, blessings, and the moments that matter most.</p>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="chuppah">Chuppah</button>
+    <button class="filter-btn" data-filter="ritual">Rituals</button>
+    <button class="filter-btn" data-filter="couple">Couple Moments</button>
+    <button class="filter-btn" data-filter="celebration">Celebration</button>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="gallery-section">
+    <div class="gallery-grid" id="gallery">
+
+<div class="gallery-item" data-filter="couple" data-caption="Winter Ceremony" data-location="Massachusetts">
+        <img src="images/IMG_20260705_092540.jpg" alt="Couple at the altar in a grand winter ballroom" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Winter Ceremony</strong>Grand Ballroom · Massachusetts
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-filter="chuppah" data-caption="Under the Open Sky" data-location="Massachusetts">
+        <img src="images/IMG_20260705_092605.jpg" alt="Modern outdoor pergola ceremony space with floral accents" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Under the Open Sky</strong>Rooftop Terrace · Massachusetts
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-filter="ritual" data-caption="Ready to Celebrate" data-location="Massachusetts">
+        <img src="images/20240412_102700.jpg" alt="Amikam Yalovetzky smiling in tallit, holding tzitzit" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Ready to Celebrate</strong>With Joy · Massachusetts
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-filter="couple" data-caption="Rooftop Ceremony" data-location="Massachusetts">
+        <img src="images/IMG_20260705_092601.jpg" alt="Outdoor rooftop ceremony with guests seated under a modern pergola chuppah" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Rooftop Ceremony</strong>Urban Terrace · Massachusetts
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-filter="chuppah" data-caption="Candlelit Aisle" data-location="Massachusetts">
+        <img src="images/IMG_20260705_092553.jpg" alt="Candlelit ceremony aisle in a grand ballroom before guests arrive" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Candlelit Aisle</strong>Grand Ballroom · Massachusetts
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-filter="couple" data-caption="Barn Ceremony" data-location="Massachusetts">
+        <img src="images/IMG_20260705_092611.jpg" alt="Rustic barn wedding ceremony with chandeliers and wooden beams" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Rustic Barn Ceremony</strong>New England Barn · Massachusetts
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button class="lb-close" id="lb-close">×</button>
+    <button class="lb-prev" id="lb-prev">‹</button>
+    <img id="lb-img" src="" alt="" />
+    <button class="lb-next" id="lb-next">›</button>
+    <div class="lb-info" id="lb-info"></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="gallery-cta">
+    <h2>Ready to Create Your Moment?</h2>
+    <p>Let's design a ceremony as beautiful as these — uniquely yours.</p>
+    <a class="btn-navy" href="index.html#contact">Book a Free Consultation</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <ul class="footer-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#process">How It Works</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p>© 2026 <strong>Amikam Yalovetzky</strong> · Wedding Officiant · Massachusetts<br/>
+    Celebrating love in all its forms 🏳️‍🌈 ✡</p>
+  </footer>
+
+  <script>
+    // ── FILTER ──────────────────────────────────────────
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        items.forEach(item => {
+          item.style.display =
+            (filter === 'all' || item.dataset.filter === filter) ? '' : 'none';
+        });
+      });
+    });
+
+    // ── LIGHTBOX ─────────────────────────────────────────
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lb-img');
+    const lbInfo    = document.getElementById('lb-info');
+    const lbClose   = document.getElementById('lb-close');
+    const lbPrev    = document.getElementById('lb-prev');
+    const lbNext    = document.getElementById('lb-next');
+
+    let current = 0;
+    let visibleItems = [];
+
+    function openLightbox(index) {
+      visibleItems = [...document.querySelectorAll('.gallery-item:not([style*="display: none"])')];
+      current = index;
+      showSlide(current);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showSlide(i) {
+      const item = visibleItems[i];
+      if (!item) return;
+      const img = item.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      const caption = item.dataset.caption || img.alt || '';
+      const location = item.dataset.location || '';
+      lbInfo.innerHTML = caption
+        ? `<strong>${caption}</strong>${location ? ' · ' + location : ''} &nbsp; ${i+1} / ${visibleItems.length}`
+        : `${i+1} / ${visibleItems.length}`;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.gallery-item').forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    lbNext.addEventListener('click', e => {
+      e.stopPropagation();
+      current = (current + 1) % visibleItems.length;
+      showSlide(current);
+    });
+
+    lbPrev.addEventListener('click', e => {
+      e.stopPropagation();
+      current = (current - 1 + visibleItems.length) % visibleItems.length;
+      showSlide(current);
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') { current = (current+1) % visibleItems.length; showSlide(current); }
+      if (e.key === 'ArrowLeft')  { current = (current-1+visibleItems.length) % visibleItems.length; showSlide(current); }
+    });
+  </script>
+
+</body>
+</html>
