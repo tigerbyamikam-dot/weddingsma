@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amikam Yalovetzky — Wedding Officiant | Massachusetts</title>
+  <meta name="description" content="Heartfelt, personalized Jewish-inspired wedding ceremonies for all couples in Massachusetts. LGBTQ+ welcoming, interfaith, and inclusive." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d2240;
+      --gold:   #c8973a;
+      --gold-lt:#e8b85a;
+      --cream:  #fdf8f0;
+      --white:  #ffffff;
+      --text:   #1a1a2e;
+      --muted:  #5a5a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ──────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5%;
+      background: rgba(13, 34, 64, 0.96);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.1rem;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ── HERO ─────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 5% 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* decorative Hebrew/geometric pattern */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(200,151,58,.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(200,151,58,.10) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .star-deco {
+      font-size: 2.2rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.5rem;
+      opacity: .85;
+      animation: spin-slow 40s linear infinite;
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+    .hero-content { position: relative; max-width: 760px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .78rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    #hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 1.4rem;
+    }
+
+    #hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    #hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.75);
+      max-width: 540px;
+      margin: 0 auto 2.4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .9rem 2.2rem;
+      border-radius: 3px;
+      font-size: .88rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all .25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      border: 2px solid var(--gold);
+    }
+    .btn-primary:hover {
+      background: var(--gold-lt);
+      border-color: var(--gold-lt);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.5);
+      margin-left: 1rem;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-badges {
+      margin-top: 3.5rem;
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+    }
+
+    .badge {
+      display: flex; align-items: center; gap: .5rem;
+      color: rgba(255,255,255,.6);
+      font-size: .8rem;
+      letter-spacing: .05em;
+    }
+    .badge span { font-size: 1rem; }
+
+    /* ── DIVIDER ─────────────────────────────── */
+    .divider {
+      text-align: center;
+      padding: 2.5rem 5%;
+      background: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--navy);
+      letter-spacing: .03em;
+    }
+
+    /* ── SECTIONS ────────────────────────────── */
+    section { padding: 6rem 5%; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .label {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: .6rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.4rem;
+    }
+
+    h2 em { color: var(--gold); font-style: italic; }
+
+    /* ── ABOUT ───────────────────────────────── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-box {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--navy);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-img-box .placeholder-emoji { opacity: .3; }
+
+    .about-accent {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      width: 50%; aspect-ratio: 1;
+      border: 3px solid var(--gold);
+      border-radius: 3px;
+      z-index: -1;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-values {
+      margin-top: 2rem;
+      display: flex; flex-direction: column; gap: .9rem;
+    }
+
+    .value-item {
+      display: flex; align-items: flex-start; gap: .9rem;
+    }
+
+    .value-icon {
+      width: 2.2rem; height: 2.2rem;
+      background: rgba(200,151,58,.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+
+    .value-item strong { display: block; color: var(--navy); font-size: .95rem; }
+    .value-item p { margin: 0; font-size: .9rem; }
+
+    /* ── SERVICES ────────────────────────────── */
+    #services { background: var(--cream); }
+
+    .services-intro {
+      max-width: 620px;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-intro p { color: var(--muted); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2.2rem;
+      border-top: 4px solid var(--gold);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(13,34,64,.1);
+    }
+
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: .7rem;
+    }
+
+    .card p { color: var(--muted); font-size: .93rem; }
+
+    .card-tag {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ── PROCESS ─────────────────────────────── */
+    #process { background: var(--navy); }
+    #process h2 { color: var(--white); }
+    #process .label { color: var(--gold-lt); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-num {
+      width: 3rem; height: 3rem;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin: 0 auto 1.2rem;
+    }
+
+    .step h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+
+    .step p { color: rgba(255,255,255,.6); font-size: .9rem; }
+
+    /* ── TESTIMONIAL ─────────────────────────── */
+    #testimonials { background: var(--cream); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: .3;
+      position: absolute;
+      top: .5rem; left: 1.2rem;
+      line-height: 1;
+    }
+
+    .testimonial p {
+      color: var(--muted);
+      font-style: italic;
+      font-size: .95rem;
+      padding-top: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-author {
+      font-weight: 500;
+      font-size: .85rem;
+      color: var(--navy);
+    }
+
+    .testimonial-location {
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ─────────────────────────────── */
+    #contact { background: var(--navy); }
+    #contact h2 { color: var(--white); }
+    #contact .label { color: var(--gold-lt); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text p {
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-details {
+      margin-top: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .contact-detail {
+      display: flex; align-items: center; gap: .8rem;
+      color: rgba(255,255,255,.8);
+      font-size: .95rem;
+    }
+
+    .contact-detail span.icon { font-size: 1.2rem; color: var(--gold); }
+
+    form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+    label {
+      display: block;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: .4rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 3px;
+      padding: .85rem 1rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: .95rem;
+      transition: border .2s;
+      outline: none;
+      appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.3); }
+
+    select option { background: var(--navy); color: var(--white); }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .submit-btn {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .submit-btn:hover { background: var(--gold-lt); }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer {
+      background: #070f1c;
+      padding: 2.5rem 5%;
+      text-align: center;
+      color: rgba(255,255,255,.4);
+      font-size: .82rem;
+    }
+
+    footer strong { color: var(--gold); }
+
+    .footer-links {
+      display: flex; justify-content: center; gap: 1.5rem;
+      margin-bottom: 1rem;
+      list-style: none;
+    }
+
+    .footer-links a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 768px) {
+      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: .8rem; }
+      .hero-badges { gap: 1.2rem; }
+      .about-accent { display: none; }
+      nav { padding: 1rem 5%; position: relative; flex-wrap: wrap; }
+
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        background: rgba(13,34,64,.98);
+        margin-top: .8rem;
+        border-top: 1px solid rgba(255,255,255,.1);
+        padding: .5rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a {
+        display: block;
+        padding: .75rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,.06);
+      }
+
+      .steps { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">✡ Amikam Yalovetzky</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <span class="star-deco">✡</span>
+      <span class="hero-eyebrow">Wedding Officiant · Massachusetts</span>
+      <h1>Your Love, <em>Your Ceremony</em></h1>
+      <p>Heartfelt, personalized Jewish-inspired ceremonies celebrating every couple — same-sex, interfaith, and all who love boldly.</p>
+      <div>
+        <a class="btn btn-primary" href="#contact">Book a Consultation</a>
+        <a class="btn btn-outline" href="#services">Our Services</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><span>🏳️‍🌈</span> LGBTQ+ Affirming</div>
+        <div class="badge"><span>✡</span> Jewish Tradition</div>
+        <div class="badge"><span>🕊</span> Interfaith Welcome</div>
+        <div class="badge"><span>📍</span> All of Massachusetts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    "Love is the most powerful force in the world — and every love deserves to be celebrated."
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <div class="about-img-box">
+            <img src="images/20240412_102700.jpg" alt="Amikam Yalovetzky, Wedding Officiant" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" />
+          </div>
+          <div class="about-accent"></div>
+        </div>
+        <div class="about-text">
+          <p class="label">About Amikam</p>
+          <h2>Rooted in Tradition, <em>Open to All</em></h2>
+          <p>I'm Amikam Yalovetzky, a wedding officiant based in Massachusetts with a passion for crafting ceremonies as unique as the people in them. Drawing on the richness of Jewish tradition — its poetry, ritual, and joy — I create ceremonies that honor your story, your values, and your love.</p>
+          <p>Whether you're a same-sex couple, come from different faith backgrounds, or are simply looking for a ceremony that feels authentically <em>you</em>, I'll work with you to weave together something meaningful, joyful, and unforgettable.</p>
+          <div class="about-values">
+            <div class="value-item">
+              <div class="value-icon">🏳️‍🌈</div>
+              <div>
+                <strong>Radically Inclusive</strong>
+                <p>Every couple welcomed with full joy and respect — no exceptions.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">✡</div>
+              <div>
+                <strong>Jewish Modern</strong>
+                <p>Ancient wisdom, blessings, and ritual adapted for contemporary life.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🕊</div>
+              <div>
+                <strong>Interfaith & Non-Religious</strong>
+                <p>Comfortable blending traditions or creating something entirely secular.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-intro">
+        <p class="label">What I Offer</p>
+        <h2>Ceremonies Crafted <em>for You</em></h2>
+        <p>Every package includes a personal consultation, a fully customized ceremony script, and my presence on your day — fully prepared and wholeheartedly present.</p>
+      </div>
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon">💍</div>
+          <h3>Jewish Ceremony</h3>
+          <p>Incorporates traditional elements — the chuppah, the seven blessings (Sheva Brachot), the ketubah, breaking of the glass — adapted to honor same-sex couples and modern sensibilities.</p>
+          <span class="card-tag">All couples welcome</span>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🕊</div>
+          <h3>Interfaith Ceremony</h3>
+          <p>A thoughtful blend of two (or more) faith traditions woven into one cohesive ceremony that honors both families and creates something beautifully new.</p>
+          <span class="card-tag">Any combination of traditions</span>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🌿</div>
+          <h3>Secular / Humanist</h3>
+          <p>A ceremony grounded in your shared values and story — no religious language required. Infused with meaning, poetry, and love without the theology.</p>
+          <span class="card-tag">Non-religious & spiritual</span>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Elopement & Micro-Wedding</h3>
+          <p>Intimate ceremonies for two (or twenty). Simple, legal, and deeply personal — perfect for couples who want the meaning without the production.</p>
+          <span class="card-tag">Short notice available</span>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📜</div>
+          <h3>Vow Renewals</h3>
+          <p>Celebrate your enduring love with a new ceremony. I'll help you reflect on your journey and write vows that capture where you are today.</p>
+          <span class="card-tag">Any anniversary</span>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">✨</div>
+          <h3>Custom & Unique</h3>
+          <p>Have something specific in mind? A ceremony that blends Jewish ritual with your own cultural heritage, family traditions, or entirely original ideas? Let's build it together.</p>
+          <span class="card-tag">Bespoke ceremonies</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-inner">
+      <p class="label">How It Works</p>
+      <h2>From Hello to <em>I Do</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>Free Consultation</h4>
+          <p>We meet (virtually or in person) to get to know each other and talk about your vision.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Craft Your Ceremony</h4>
+          <p>I write a custom script based on your story, preferences, and chosen traditions.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Review & Refine</h4>
+          <p>You review the script, we fine-tune every word until it feels perfectly right.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>Your Big Day</h4>
+          <p>I arrive prepared, present, and honored to stand with you at the altar.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <h4>Official & Legal</h4>
+          <p>Your marriage license is filed and your union is made legal in Massachusetts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <p class="label">Couples We've Celebrated</p>
+      <h2>Words from the <em>Newlyweds</em></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p>Amikam made us feel completely seen. He wove in Jewish blessings in a way that felt genuinely meaningful — and never once made us feel like anything other than a couple deeply in love. Our ceremony was perfect.</p>
+          <div class="testimonial-author">Jordan & Maya</div>
+          <div class="testimonial-location">Boston, MA</div>
+        </div>
+        <div class="testimonial">
+          <p>As an interfaith couple we were nervous about finding someone who could honor both traditions. Amikam created something so beautiful it made both our families cry. He listened to every detail.</p>
+          <div class="testimonial-author">Daniel & Priya</div>
+          <div class="testimonial-location">Northampton, MA</div>
+        </div>
+        <div class="testimonial">
+          <p>We eloped in three weeks and Amikam made it feel like the most thoughtfully planned ceremony imaginable. Funny, warm, and professional — he's the real deal.</p>
+          <div class="testimonial-author">Sam & Alex</div>
+          <div class="testimonial-location">Provincetown, MA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY TEASER -->
+  <section id="gallery-teaser" style="background:var(--navy);padding:5rem 5%;text-align:center;">
+    <p style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:.6rem;">Ceremony Moments</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:1rem;">See Love <em style="color:var(--gold);font-style:italic;">in Action</em></h2>
+    <p style="color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.2rem;">Browse photos from ceremonies I've had the honor of officiating — chuppot, blessings, and unforgettable moments.</p>
+    <a href="gallery.html" style="display:inline-block;background:var(--gold);color:var(--navy);padding:.9rem 2.2rem;border-radius:3px;text-decoration:none;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;transition:background .2s;" onmouseover="this.style.background='#e8b85a'" onmouseout="this.style.background='#c8973a'">View the Gallery ✡</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <div class="contact-text">
+          <p class="label">Get in Touch</p>
+          <h2>Let's Start <em>Planning</em></h2>
+          <p>Ready to talk about your ceremony? Fill out the form and I'll be in touch within 24 hours. Your first consultation is always free.</p>
+          <p>I serve all of Massachusetts — Boston, the South Shore, Cape Cod, the Berkshires, Pioneer Valley, and everywhere in between.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="icon">✉️</span>
+              <span>info@amikamyalovetzky.com</span>
+            </div>
+            <div class="contact-detail">
+              <span class="icon">📞</span>
+              <span>781-824-1444</span>
+            </div>
+            <div class="contact-detail">
+              <span class="icon">📍</span>
+              <span>Serving all of Massachusetts</span>
+            </div>
+            <div class="contact-detail">
+              <span class="icon">🏳️‍🌈</span>
+              <span>LGBTQ+ Affirming · Interfaith · All Are Welcome</span>
+            </div>
+          </div>
+        </div>
+        <form action="mailto:info@amikamyalovetzky.com" method="POST" enctype="text/plain">
+          <div class="form-row">
+            <div>
+              <label for="name1">Partner 1 Name</label>
+              <input type="text" id="name1" name="partner1" placeholder="Your name" />
+            </div>
+            <div>
+              <label for="name2">Partner 2 Name</label>
+              <input type="text" id="name2" name="partner2" placeholder="Their name" />
+            </div>
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="date">Wedding Date (if known)</label>
+            <input type="date" id="date" name="date" />
+          </div>
+          <div>
+            <label for="type">Ceremony Type</label>
+            <select id="type" name="type">
+              <option value="" disabled selected>Select one…</option>
+              <option>Jewish Ceremony</option>
+              <option>Interfaith Ceremony</option>
+              <option>Secular / Humanist</option>
+              <option>Elopement / Micro-Wedding</option>
+              <option>Vow Renewal</option>
+              <option>Custom / Not Sure Yet</option>
+            </select>
+          </div>
+          <div>
+            <label for="msg">Tell Me About Your Vision</label>
+            <textarea id="msg" name="message" placeholder="Share anything — your story, your ideas, your questions…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send a Message ✡</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p>© 2026 <strong>Amikam Yalovetzky</strong> · Wedding Officiant · Massachusetts<br/>
+    Celebrating love in all its forms 🏳️‍🌈 ✡</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    // close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+  </script>
+
+</body>
+</html>
